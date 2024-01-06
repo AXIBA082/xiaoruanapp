@@ -6,7 +6,9 @@ spring:
     url: jdbc:mysql://114.55.117.70:3306/znzd?serverTimezone=GMT%2b8&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 6666
-
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
 
