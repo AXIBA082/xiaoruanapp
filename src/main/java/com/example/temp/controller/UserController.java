@@ -32,7 +32,6 @@ public class UserController{
     public ResultVO userregister(@RequestBody User userregister,@PathVariable String code){
         ResultVO resultVO = this.userService.register(userregister,code);
         return resultVO;
-
     }
 
 
