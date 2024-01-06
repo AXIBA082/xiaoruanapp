@@ -1,13 +1,13 @@
-package com.example.temp.repository;
+package com.example.xiaoruan.repository;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.temp.entity.Verification;
+import com.example.xiaoruan.entity.Question;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface VerificationRepository extends BaseMapper<Verification> {
+public interface QuestionRepository extends BaseMapper<Question> {
 
 }
 

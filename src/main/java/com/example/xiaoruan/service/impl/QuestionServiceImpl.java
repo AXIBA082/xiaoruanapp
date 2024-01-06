@@ -1,9 +1,9 @@
-package com.example.temp.service.impl;
+package com.example.xiaoruan.service.impl;
 
-import com.example.temp.entity.Question;
-import com.example.temp.repository.QuestionRepository;
-import com.example.temp.service.QuestionService;
-import com.example.temp.vo.ResultVO;
+import com.example.xiaoruan.entity.Question;
+import com.example.xiaoruan.repository.QuestionRepository;
+import com.example.xiaoruan.service.QuestionService;
+import com.example.xiaoruan.vo.ResultVO;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

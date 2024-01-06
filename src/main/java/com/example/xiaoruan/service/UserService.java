@@ -1,7 +1,7 @@
-package com.example.temp.service;
+package com.example.xiaoruan.service;
 
-import com.example.temp.entity.User;
-import com.example.temp.vo.ResultVO;
+import com.example.xiaoruan.entity.User;
+import com.example.xiaoruan.vo.ResultVO;
 
 
 public interface UserService{

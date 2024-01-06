@@ -1,4 +1,4 @@
-package com.example.temp;
+package com.example.xiaoruan;
 
 import com.baomidou.mybatisplus.autoconfigure.DdlApplicationRunner;
 import org.springframework.beans.factory.annotation.Autowired;

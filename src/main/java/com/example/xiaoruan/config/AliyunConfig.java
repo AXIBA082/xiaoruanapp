@@ -1,4 +1,4 @@
-package com.example.temp.config;
+package com.example.xiaoruan.config;
 
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;

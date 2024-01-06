@@ -1,13 +1,13 @@
-package com.example.temp.service.impl;
+package com.example.xiaoruan.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.temp.config.AliyunConfig;
-import com.example.temp.entity.User;
-import com.example.temp.entity.Verification;
-import com.example.temp.repository.UserRepository;
-import com.example.temp.repository.VerificationRepository;
-import com.example.temp.service.UserService;
-import com.example.temp.vo.ResultVO;
+import com.example.xiaoruan.config.AliyunConfig;
+import com.example.xiaoruan.entity.User;
+import com.example.xiaoruan.entity.Verification;
+import com.example.xiaoruan.repository.UserRepository;
+import com.example.xiaoruan.repository.VerificationRepository;
+import com.example.xiaoruan.service.UserService;
+import com.example.xiaoruan.vo.ResultVO;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

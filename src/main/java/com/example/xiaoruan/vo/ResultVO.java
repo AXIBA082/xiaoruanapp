@@ -1,4 +1,4 @@
-package com.example.temp.vo;
+package com.example.xiaoruan.vo;
 
 import lombok.Data;
 

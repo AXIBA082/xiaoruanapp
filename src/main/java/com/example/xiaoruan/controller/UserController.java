@@ -1,9 +1,9 @@
-package com.example.temp.controller;
+package com.example.xiaoruan.controller;
 
 
-import com.example.temp.entity.User;
-import com.example.temp.service.UserService;
-import com.example.temp.vo.ResultVO;
+import com.example.xiaoruan.entity.User;
+import com.example.xiaoruan.service.UserService;
+import com.example.xiaoruan.vo.ResultVO;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

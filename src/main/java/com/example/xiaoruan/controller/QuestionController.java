@@ -1,8 +1,8 @@
-package com.example.temp.controller;
+package com.example.xiaoruan.controller;
 
 
-import com.example.temp.service.QuestionService;
-import com.example.temp.vo.ResultVO;
+import com.example.xiaoruan.service.QuestionService;
+import com.example.xiaoruan.vo.ResultVO;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
