@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Bean;
 import java.util.List;
 
 @SpringBootApplication
-public class Demo1Application {
+public class XiaoruanApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Demo1Application.class, args);
+        SpringApplication.run(XiaoruanApplication.class, args);
     }
     @Bean
     public DdlApplicationRunner ddlApplicationRunner(@Autowired(required = false) List ddlList) {
