@@ -57,13 +57,15 @@ public class UserServiceImpl implements UserService {
             resultVO.setData("邮箱已注册！");
             return resultVO;
         }
-        String code=new String();
+        String code= "";
         QueryWrapper<Verification> queryWrapper1 = new QueryWrapper<>();
+        queryWrapper1.eq("email", email);
         Verification verification=this.verificationRepository.selectOne(queryWrapper1);
         if(verification==null){
             Random random = new Random();
             int num=random.nextInt(900000) + 100000;
             code = String.valueOf(num);
+            verification = new Verification();
             verification.setEmail(email);
             verification.setCode(code);
             verificationRepository.insert(verification);
