@@ -57,13 +57,18 @@ public class UserServiceImpl implements UserService {
             resultVO.setData("邮箱已注册！");
             return resultVO;
         }
-        Random random = new Random();
-        int num=random.nextInt(900000) + 100000;
-        String code = String.valueOf(num);
-        Verification verification=new Verification();
-        verification.setEmail(email);
-        verification.setCode(code);
-        verificationRepository.insert(verification);
+        String code=new String();
+        QueryWrapper<Verification> queryWrapper1 = new QueryWrapper<>();
+        Verification verification=this.verificationRepository.selectOne(queryWrapper1);
+        if(verification==null){
+            Random random = new Random();
+            int num=random.nextInt(900000) + 100000;
+            code = String.valueOf(num);
+            verification.setEmail(email);
+            verification.setCode(code);
+            verificationRepository.insert(verification);
+        }
+        code=verification.getCode();
         Session session= AliyunConfig.ConnectAliyun();
         try {
             Message message = new MimeMessage(session);
@@ -75,31 +80,40 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         resultVO.setCode(0);
         resultVO.setData(verification);
         return resultVO;
     }
     @Override
-    public ResultVO register(User userregister,String code){
-        QueryWrapper<Verification> queryWrapper1 = new QueryWrapper<>();
-        queryWrapper1.eq("email", userregister.getEmail());
-        Verification verification = this.verificationRepository.selectOne(queryWrapper1);
+    public ResultVO registercode(String email, String code){
+        QueryWrapper<Verification> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", email);
+        Verification verification = this.verificationRepository.selectOne(queryWrapper);
         ResultVO resultVO = new ResultVO();
-        if(Objects.equals(verification.getCode(), code)){
-            Random random = new Random();
-            int num=random.nextInt(900000) + 100000;
-            String ID = String.valueOf(num);
-            userregister.setId(ID);
-            userRepository.insert(userregister);
-            verificationRepository.delete(queryWrapper1);
+        if(verification==null){
+            resultVO.setCode(-1);
+            resultVO.setData("验证码已过期或未发送！");
+        }
+        else if(Objects.equals(verification.getCode(), code)){
             resultVO.setCode(0);
-            resultVO.setData(userregister);
+            resultVO.setData("验证成功！");
         }
         else{
-            resultVO.setCode(-1);
+            resultVO.setCode(-2);
             resultVO.setData("验证码错误");
         }
+        return resultVO;
+    }
+    @Override
+    public ResultVO register(User userregister){
+        ResultVO resultVO = new ResultVO();
+        Random random = new Random();
+        int num=random.nextInt(900000) + 100000;
+        String ID = String.valueOf(num);
+        userregister.setId(ID);
+        userRepository.insert(userregister);
+        resultVO.setCode(0);
+        resultVO.setData(userregister);
         return resultVO;
     }
     @Override
