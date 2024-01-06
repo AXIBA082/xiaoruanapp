@@ -48,6 +48,15 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public ResultVO registersendemail(String email){
+        ResultVO resultVO = new ResultVO();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", email);
+        User user = this.userRepository.selectOne(queryWrapper);
+        if(user!=null){
+            resultVO.setCode(-1);
+            resultVO.setData("邮箱已注册！");
+            return resultVO;
+        }
         Random random = new Random();
         int num=random.nextInt(900000) + 100000;
         String code = String.valueOf(num);
@@ -66,7 +75,7 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ResultVO resultVO = new ResultVO();
+
         resultVO.setCode(0);
         resultVO.setData(verification);
         return resultVO;
