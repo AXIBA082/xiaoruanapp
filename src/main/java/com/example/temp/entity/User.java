@@ -9,8 +9,8 @@ import lombok.Data;
 @TableName("User")
 public class User  {
 
-    @TableId(value="id",type = IdType.AUTO)
-    private Integer id;
+    @TableId(value="id")
+    private String id;
     
     private String nickname;
     

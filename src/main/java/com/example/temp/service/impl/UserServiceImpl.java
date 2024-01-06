@@ -78,6 +78,10 @@ public class UserServiceImpl implements UserService {
         Verification verification = this.verificationRepository.selectOne(queryWrapper1);
         ResultVO resultVO = new ResultVO();
         if(Objects.equals(verification.getCode(), code)){
+            Random random = new Random();
+            int num=random.nextInt(900000) + 100000;
+            String ID = String.valueOf(num);
+            userregister.setId(ID);
             userRepository.insert(userregister);
             verificationRepository.delete(queryWrapper1);
             resultVO.setCode(0);
