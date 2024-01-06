@@ -34,6 +34,12 @@ public class UserController{
         return resultVO;
     }
 
+    @GetMapping("/info/{id}")
+    public ResultVO userinfo(@PathVariable int id ){
+        ResultVO resultVO = this.userService.getinfo(id);
+        return resultVO;
+    }
+
 
 
 }

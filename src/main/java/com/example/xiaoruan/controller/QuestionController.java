@@ -15,7 +15,7 @@ public class QuestionController{
     private QuestionService questionService;
 
     @GetMapping("/get/{id}")
-    public ResultVO sendemail(@PathVariable int id) {
+    public ResultVO getquestion(@PathVariable int id) {
         ResultVO resultVO = this.questionService.getQuestion(id);
         return resultVO;
     }

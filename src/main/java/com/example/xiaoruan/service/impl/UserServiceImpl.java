@@ -93,5 +93,19 @@ public class UserServiceImpl implements UserService {
         }
         return resultVO;
     }
+    @Override
+    public ResultVO getinfo(int id){
+        User user=userRepository.selectById(id);
+        ResultVO resultVO = new ResultVO();
+        if(user!=null){
+            resultVO.setCode(0);
+            resultVO.setData(user);
+        }
+        else{
+            resultVO.setCode(-1);
+            resultVO.setData("用户不存在");
+        }
+        return resultVO;
+    }
 }
 
