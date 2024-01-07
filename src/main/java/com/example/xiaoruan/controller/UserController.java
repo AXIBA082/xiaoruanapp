@@ -22,6 +22,17 @@ public class UserController{
         ResultVO resultVO = this.userService.login(userlogin);
         return resultVO;
     }
+    @GetMapping("/find/{email}/{oldpassword}")
+    public ResultVO judgment_oldpassword(@PathVariable String email,@PathVariable String oldpassword) {
+        ResultVO resultVO = this.userService.judgepassword(email,oldpassword);
+        return resultVO;
+    }
+
+    @GetMapping ("/update/{email}/{password}")
+    public ResultVO updateuser(@PathVariable String email,@PathVariable String password) {
+        ResultVO resultVO = this.userService.update(email,password);
+        return resultVO;
+    }
 
     @GetMapping("/register/sendemail/{operation}/{email}")
         public ResultVO sendemail(@PathVariable String operation,@PathVariable String email) {

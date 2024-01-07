@@ -10,5 +10,8 @@ public interface UserService{
     ResultVO register(User userregister);
     ResultVO registercode(String email,String code,String nickname);
     ResultVO getinfo(int id);
+
+    ResultVO update(String email,String password);
+    ResultVO judgepassword(String email,String oldpassword);
 }
 

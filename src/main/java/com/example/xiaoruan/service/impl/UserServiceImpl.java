@@ -141,5 +141,33 @@ public class UserServiceImpl implements UserService {
         }
         return resultVO;
     }
+    @Override
+    public ResultVO update(String email,String password){
+        ResultVO resultVO = new ResultVO();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", email);
+        User user = this.userRepository.selectOne(queryWrapper);
+        user.setPassword(password);
+        userRepository.update(queryWrapper);
+        resultVO.setCode(0);
+        resultVO.setData(user);
+        return resultVO;
+    }
+    @Override
+    public ResultVO judgepassword(String email,String oldpassword){
+        ResultVO resultVO = new ResultVO();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", email);
+        User user = this.userRepository.selectOne(queryWrapper);
+        if(Objects.equals(user.getPassword(), oldpassword)){
+            resultVO.setCode(0);
+            resultVO.setData(user);
+        }
+        resultVO.setCode(-1);
+        resultVO.setData("旧密码错误！");
+        return resultVO;
+    }
 }
+
+
 
