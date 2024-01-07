@@ -23,14 +23,14 @@ public class UserController{
         return resultVO;
     }
 
-    @GetMapping("/register/sendemail/{email}")
-        public ResultVO sendemail(@PathVariable String email) {
-            ResultVO resultVO = this.userService.registersendemail(email);
+    @GetMapping("/register/sendemail/{operation}/{email}/")
+        public ResultVO sendemail(@PathVariable String operation,@PathVariable String email) {
+            ResultVO resultVO = this.userService.registersendemail(operation,email);
             return resultVO;
     }
-    @GetMapping("/register/code/{email}/{code}")
-    public ResultVO userregister(@PathVariable String email,@PathVariable String code){
-        ResultVO resultVO = this.userService.registercode(email,code);
+    @GetMapping("/register/code/{email}/{code}/{nickname}")
+    public ResultVO userregister(@PathVariable String email,@PathVariable String code,@PathVariable String nickname){
+        ResultVO resultVO = this.userService.registercode(email,code,nickname);
         return resultVO;
     }
     @PostMapping("/register")

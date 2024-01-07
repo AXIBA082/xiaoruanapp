@@ -6,9 +6,9 @@ import com.example.xiaoruan.vo.ResultVO;
 
 public interface UserService{
     ResultVO login(User userlogin);
-    ResultVO registersendemail(String email);
+    ResultVO registersendemail(String operation,String email);
     ResultVO register(User userregister);
-    ResultVO registercode(String email,String code);
+    ResultVO registercode(String email,String code,String nickname);
     ResultVO getinfo(int id);
 }
 

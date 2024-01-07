@@ -47,15 +47,17 @@ public class UserServiceImpl implements UserService {
         return resultVO;
     }
     @Override
-    public ResultVO registersendemail(String email){
+    public ResultVO registersendemail(String operation,String email){
         ResultVO resultVO = new ResultVO();
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("email", email);
-        User user = this.userRepository.selectOne(queryWrapper);
-        if(user!=null){
-            resultVO.setCode(-1);
-            resultVO.setData("邮箱已注册！");
-            return resultVO;
+        if(Objects.equals(operation, "R")){
+            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("email", email);
+            User user = this.userRepository.selectOne(queryWrapper);
+            if(user!=null){
+                resultVO.setCode(-1);
+                resultVO.setData("邮箱已注册！");
+                return resultVO;
+            }
         }
         String code= "";
         QueryWrapper<Verification> queryWrapper1 = new QueryWrapper<>();
@@ -76,8 +78,8 @@ public class UserServiceImpl implements UserService {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("outsider0820@yigefengfeng.top"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-            message.setSubject("邮箱验证吗");
-            message.setText("欢迎注册小软刷题app，您的验证码是"+code+",接下来的旅途就有我们一起度过吧(●'◡'●)!");
+            message.setSubject("邮箱验证");
+            message.setText("欢迎注册小软刷题app，您的验证码是"+code+",接下来的旅途就由我们一起度过吧(●'◡'●)!");
             Transport.send(message);
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,11 +89,17 @@ public class UserServiceImpl implements UserService {
         return resultVO;
     }
     @Override
-    public ResultVO registercode(String email, String code){
+    public ResultVO registercode(String email, String code,String nickname){
+        ResultVO resultVO = new ResultVO();
+        QueryWrapper<User> queryWrapper1 = new QueryWrapper<>();
+        queryWrapper1.eq("nickname", nickname);
+        if(this.userRepository.selectOne(queryWrapper1)!=null){
+            resultVO.setCode(-3);
+            resultVO.setData("昵称重复");
+        }
         QueryWrapper<Verification> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("email", email);
         Verification verification = this.verificationRepository.selectOne(queryWrapper);
-        ResultVO resultVO = new ResultVO();
         if(verification==null){
             resultVO.setCode(-1);
             resultVO.setData("验证码已过期或未发送！");
