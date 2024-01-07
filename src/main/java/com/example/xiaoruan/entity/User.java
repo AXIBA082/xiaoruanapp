@@ -21,5 +21,7 @@ public class User  {
     
     private String school;
 
+    private String avatar;
+
 }
 
