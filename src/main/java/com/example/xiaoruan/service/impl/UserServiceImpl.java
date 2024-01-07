@@ -96,6 +96,7 @@ public class UserServiceImpl implements UserService {
         if(this.userRepository.selectOne(queryWrapper1)!=null){
             resultVO.setCode(-3);
             resultVO.setData("昵称重复");
+            return resultVO;
         }
         QueryWrapper<Verification> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("email", email);
