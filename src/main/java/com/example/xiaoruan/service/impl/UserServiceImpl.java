@@ -30,14 +30,13 @@ public class UserServiceImpl implements UserService {
     public ResultVO login(User userlogin) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("email", userlogin.getEmail());
-        queryWrapper.eq("password", userlogin.getPassword());
         User user = this.userRepository.selectOne(queryWrapper);
         ResultVO resultVO = new ResultVO();
         if(user == null){
             resultVO.setCode(-1);
-            resultVO.setData("网络异常!");
+            resultVO.setData("不存在该账户!");
         } else {
-            if(!user.getPassword().equals(user.getPassword())){
+            if(!userlogin.getPassword().equals(user.getPassword())){
                 resultVO.setCode(-2);
                 resultVO.setData("密码错误!");
             } else {
