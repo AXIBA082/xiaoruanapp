@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
     public ResultVO login(User userlogin) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("email", userlogin.getEmail());
+        queryWrapper.eq("password", userlogin.getPassword());
         User user = this.userRepository.selectOne(queryWrapper);
         ResultVO resultVO = new ResultVO();
         if(user == null){
