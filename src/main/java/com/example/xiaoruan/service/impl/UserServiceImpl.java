@@ -59,6 +59,16 @@ public class UserServiceImpl implements UserService {
                 return resultVO;
             }
         }
+        else if(Objects.equals(operation, "F")){
+            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("email", email);
+            User user = this.userRepository.selectOne(queryWrapper);
+            if(user==null){
+                resultVO.setCode(-2);
+                resultVO.setData("邮箱不存在！");
+                return resultVO;
+            }
+        }
         String code= "";
         QueryWrapper<Verification> queryWrapper1 = new QueryWrapper<>();
         queryWrapper1.eq("email", email);
