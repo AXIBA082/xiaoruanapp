@@ -148,7 +148,7 @@ public class UserServiceImpl implements UserService {
         queryWrapper.eq("email", email);
         User user = this.userRepository.selectOne(queryWrapper);
         user.setPassword(password);
-        userRepository.update(queryWrapper);
+        userRepository.updateById(user);
         resultVO.setCode(0);
         resultVO.setData(user);
         return resultVO;
