@@ -20,5 +20,12 @@ public class QuestionController{
         return resultVO;
     }
 
+    @GetMapping("/gettotal")
+    public ResultVO gettotal() {
+        ResultVO resultVO = this.questionService.getTotal();
+        return resultVO;
+    }
+
+
 }
 
