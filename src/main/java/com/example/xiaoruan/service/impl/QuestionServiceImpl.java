@@ -2,7 +2,6 @@ package com.example.xiaoruan.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.xiaoruan.entity.Question;
-import com.example.xiaoruan.entity.User;
 import com.example.xiaoruan.repository.QuestionRepository;
 import com.example.xiaoruan.service.QuestionService;
 import com.example.xiaoruan.vo.ResultVO;
