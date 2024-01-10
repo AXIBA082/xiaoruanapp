@@ -26,6 +26,10 @@ public class QuestionController{
         return resultVO;
     }
 
-
+    @GetMapping("/addtable/{id}")
+    public ResultVO addquestiontable(@PathVariable String id ){
+        ResultVO resultVO = this.questionService.addQuestionTable(id);
+        return resultVO;
+    }
 }
 

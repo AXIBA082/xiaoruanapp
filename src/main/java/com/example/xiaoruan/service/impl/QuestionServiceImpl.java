@@ -29,5 +29,13 @@ public class QuestionServiceImpl  implements QuestionService {
         resultVO.setData(questionRepository.selectCount(queryWrapper));
         return resultVO;
     }
+    @Override
+    public ResultVO addQuestionTable(String id){
+        ResultVO resultVO=new ResultVO();
+        questionRepository.addtable(id);
+        resultVO.setData("table"+id+"表已创建！");
+        resultVO.setCode(0);
+        return resultVO;
+    }
 }
 
