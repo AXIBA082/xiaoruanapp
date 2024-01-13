@@ -14,7 +14,7 @@ public class Post {
 
     private String avatar;
 
-    private Date posttime;
+    private String posttime;
 
     private String title;
 

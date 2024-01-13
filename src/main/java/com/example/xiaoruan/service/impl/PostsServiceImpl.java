@@ -5,10 +5,10 @@ import com.example.xiaoruan.entity.Post;
 import com.example.xiaoruan.entity.Posts;
 import com.example.xiaoruan.entity.User;
 import com.example.xiaoruan.repository.PostsRepository;
-import com.example.xiaoruan.repository.QuestionRepository;
 import com.example.xiaoruan.repository.UserRepository;
 import com.example.xiaoruan.service.PostsService;
 import com.example.xiaoruan.vo.ResultVO;
+import com.example.xiaoruan.vo.TimeVo;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +51,7 @@ public class PostsServiceImpl  implements PostsService {
             post.setUserid(a.getUserid());
             post.setNickname(user.getNickname());
             post.setAvatar(user.getAvatar());
-            post.setPosttime(a.getPosttime());
+            post.setPosttime(TimeVo.timeTransform(a.getPosttime()));
             post.setTitle(a.getTitle());
             post.setContent(a.getContent());
             post.setImage1(a.getImage1());
@@ -77,7 +77,7 @@ public class PostsServiceImpl  implements PostsService {
         post.setUserid(posts.getUserid());
         post.setNickname(user.getNickname());
         post.setAvatar(user.getAvatar());
-        post.setPosttime(posts.getPosttime());
+        post.setPosttime(TimeVo.timeTransform(posts.getPosttime()));
         post.setTitle(posts.getTitle());
         post.setContent(posts.getContent());
         post.setImage1(posts.getImage1());
