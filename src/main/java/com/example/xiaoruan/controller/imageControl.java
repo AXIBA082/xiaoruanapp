@@ -23,7 +23,7 @@ public class imageControl {
 //这个写在了配置文件中
 
     @PostMapping("/upload/img")
-    public String[] upload(MultipartFile file) {
+    public String upload(MultipartFile file) {
         String fileName = file.getOriginalFilename();  // 文件名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
         fileName = UUIDUtils.generateUniqueFileName() + suffixName; // 新文件名
@@ -36,23 +36,12 @@ public class imageControl {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String final_fileName = "http://116.211.143.77:39313" + picturePath_mapping + fileName;
+        String final_fileName = "http://183.136.206.184:21731" + picturePath_mapping + fileName;
         System.out.println(final_fileName);
-        String[] paths = new String[2];
-        paths[0] = final_fileName;
-        paths[1] = dest.getPath();
-
-        return paths;
-    }
-
-    public String download(String filepath) {
-        File file = new File(filepath);
-        String fileName = file.getName();  // 文件名
-
-        String final_fileName = "http://localhost:8080" + picturePath_mapping + fileName;
 
         return final_fileName;
     }
+
 
 }
 
