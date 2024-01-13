@@ -9,7 +9,7 @@ public interface UserService{
     ResultVO registersendemail(String operation,String email);
     ResultVO register(User userregister);
     ResultVO registercode(String email,String code,String nickname);
-    ResultVO getinfo(int id);
+    ResultVO getinfo(String email);
 
     ResultVO update(String email,String password);
     ResultVO judgepassword(String email,String oldpassword);
