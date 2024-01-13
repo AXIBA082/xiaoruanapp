@@ -1,6 +1,8 @@
 package com.example.xiaoruan.service;
 
-public interface CommentsService  {
+import com.example.xiaoruan.vo.ResultVO;
 
+public interface CommentsService  {
+    ResultVO getcomments(int postId);
 }
 
