@@ -10,8 +10,11 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+pictureFile:
+  path: "D:/JAVA/upload/"
+  path-mapping: "/myImg/"
 
-
-
+resources:
+  static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${pictureFile.path-mapping}
 
 
