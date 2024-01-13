@@ -138,8 +138,10 @@ public class UserServiceImpl implements UserService {
         return resultVO;
     }
     @Override
-    public ResultVO getinfo(int id){
-        User user=userRepository.selectById(id);
+    public ResultVO getinfo(String email){
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", email);
+        User user=userRepository.selectOne(queryWrapper);
         ResultVO resultVO = new ResultVO();
         if(user!=null){
             resultVO.setCode(0);

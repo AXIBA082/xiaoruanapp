@@ -49,9 +49,9 @@ public class UserController{
         ResultVO resultVO = this.userService.register(userregister);
         return resultVO;
     }
-    @GetMapping("/info/{id}")
-    public ResultVO userinfo(@PathVariable int id ){
-        ResultVO resultVO = this.userService.getinfo(id);
+    @GetMapping("/info/{email}")
+    public ResultVO userinfo(@PathVariable String email ){
+        ResultVO resultVO = this.userService.getinfo(email);
         return resultVO;
     }
 
