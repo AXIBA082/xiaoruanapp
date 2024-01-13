@@ -13,5 +13,9 @@ public interface UserService{
 
     ResultVO update(String email,String password);
     ResultVO judgepassword(String email,String oldpassword);
+
+    ResultVO updateinfo(User user);
+
+    ResultVO updateavatar(User user);
 }
 

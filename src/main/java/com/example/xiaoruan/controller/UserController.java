@@ -34,6 +34,18 @@ public class UserController{
         return resultVO;
     }
 
+    @PostMapping  ("/updateinfo")
+    public ResultVO updateinfo(@RequestBody User user) {
+        ResultVO resultVO = this.userService.updateinfo(user);
+        return resultVO;
+    }
+
+    @PostMapping  ("/updatavatar")
+    public ResultVO updaetavatar(@RequestBody User user) {
+        ResultVO resultVO = this.userService.updateavatar(user);
+        return resultVO;
+    }
+
     @GetMapping("/register/sendemail/{operation}/{email}")
         public ResultVO sendemail(@PathVariable String operation,@PathVariable String email) {
             ResultVO resultVO = this.userService.registersendemail(operation,email);

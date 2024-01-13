@@ -166,6 +166,32 @@ public class UserServiceImpl implements UserService {
         return resultVO;
     }
     @Override
+    public ResultVO updateinfo(User user){
+        ResultVO resultVO = new ResultVO();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", user.getEmail());
+        queryWrapper.eq("nicknanme", user.getNickname());
+        queryWrapper.eq("gender", user.getGender());
+        queryWrapper.eq("school", user.getSchool());
+        userRepository.update(queryWrapper);
+        resultVO.setData(0);
+        resultVO.setData(userRepository.selectOne(queryWrapper));
+        return resultVO;
+    }
+
+    @Override
+    public ResultVO updateavatar(User user){
+        ResultVO resultVO = new ResultVO();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", user.getEmail());
+        queryWrapper.eq("avatar", user.getAvatar());
+        userRepository.update(queryWrapper);
+        resultVO.setData(0);
+        resultVO.setData(userRepository.selectOne(queryWrapper));
+        return resultVO;
+    }
+
+    @Override
     public ResultVO judgepassword(String email,String oldpassword){
         ResultVO resultVO = new ResultVO();
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
