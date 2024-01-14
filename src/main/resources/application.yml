@@ -6,6 +6,10 @@ spring:
     url: jdbc:mysql://116.211.143.77:55556/znzd?serverTimezone=GMT%2b8&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 6666
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
