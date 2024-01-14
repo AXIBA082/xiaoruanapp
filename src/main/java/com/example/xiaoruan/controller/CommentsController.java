@@ -22,5 +22,6 @@ public class CommentsController {
         ResultVO resultVO = this.commentsService.getcomments(postId);
         return resultVO;
     }
+
 }
 

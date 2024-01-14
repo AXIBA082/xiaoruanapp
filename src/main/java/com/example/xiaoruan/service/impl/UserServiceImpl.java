@@ -184,8 +184,9 @@ public class UserServiceImpl implements UserService {
         ResultVO resultVO = new ResultVO();
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("email", user.getEmail());
-        queryWrapper.eq("avatar", user.getAvatar());
-        userRepository.update(queryWrapper);
+        User user1=userRepository.selectOne(queryWrapper);
+        user1.setAvatar(user.getAvatar());
+        userRepository.updateById(user1);
         resultVO.setData(0);
         resultVO.setData(userRepository.selectOne(queryWrapper));
         return resultVO;
