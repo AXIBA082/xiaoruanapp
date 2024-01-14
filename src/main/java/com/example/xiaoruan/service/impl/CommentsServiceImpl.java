@@ -1,10 +1,7 @@
 package com.example.xiaoruan.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.xiaoruan.entity.Comment;
-import com.example.xiaoruan.entity.Comments;
-import com.example.xiaoruan.entity.Posts;
-import com.example.xiaoruan.entity.User;
+import com.example.xiaoruan.entity.*;
 import com.example.xiaoruan.repository.CommentsRepository;
 import com.example.xiaoruan.repository.PostsRepository;
 import com.example.xiaoruan.repository.UserRepository;
@@ -42,6 +39,22 @@ public class CommentsServiceImpl  implements CommentsService {
         }
         resultVO.setCode(0);
         resultVO.setData(commentList);
+        return resultVO;
+    }
+
+    @Override
+    public ResultVO addcomments(CommentData commentData){
+        ResultVO resultVO = new ResultVO();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", commentData.getEmail());
+        String id=userRepository.selectOne(queryWrapper).getId();
+        Comments comments = new Comments();
+        comments.setPostid(commentData.getPostid());
+        comments.setUserid(Integer.valueOf(id));
+        comments.setContent(commentData.getContent());
+        commentsRepository.insert(comments);
+        resultVO.setCode(0);
+        resultVO.setData(comments);
         return resultVO;
     }
 }
