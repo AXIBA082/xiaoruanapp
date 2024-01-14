@@ -2,6 +2,7 @@ package com.example.xiaoruan.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.xiaoruan.entity.Post;
+import com.example.xiaoruan.entity.PostData;
 import com.example.xiaoruan.entity.Posts;
 import com.example.xiaoruan.entity.User;
 import com.example.xiaoruan.repository.PostsRepository;
@@ -28,8 +29,18 @@ public class PostsServiceImpl  implements PostsService {
     private UserRepository userRepository;
 
     @Override
-    public ResultVO addpost(Posts posts){
+    public ResultVO addpost(PostData postData){
         ResultVO resultVO = new ResultVO();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", postData.getEmail());
+        String id=userRepository.selectOne(queryWrapper).getId();
+        Posts posts = new Posts();
+        posts.setUserid(Integer.valueOf(id));
+        posts.setTitle(postData.getTitle());
+        posts.setContent(postData.getContent());
+        posts.setImage1(postData.getImage1());
+        posts.setImage2(postData.getImage2());
+        posts.setImage3(postData.getImage3());
         postsRepository.insert(posts);
         resultVO.setCode(0);
         resultVO.setData(posts);

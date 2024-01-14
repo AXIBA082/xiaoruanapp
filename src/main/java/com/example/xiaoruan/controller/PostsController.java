@@ -1,6 +1,7 @@
 package com.example.xiaoruan.controller;
 
 
+import com.example.xiaoruan.entity.PostData;
 import com.example.xiaoruan.entity.Posts;
 import com.example.xiaoruan.service.PostsService;
 import com.example.xiaoruan.vo.ResultVO;
@@ -29,8 +30,8 @@ public class PostsController{
 
 
     @PostMapping("/addpost")
-    public ResultVO addPost(@RequestBody Posts posts){
-        ResultVO resultVO = this.postsService.addpost(posts);
+    public ResultVO addPost(@RequestBody PostData postData){
+        ResultVO resultVO = this.postsService.addpost(postData);
         return resultVO;
     }
 
