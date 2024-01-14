@@ -40,7 +40,7 @@ public class UserController{
         return resultVO;
     }
 
-    @PostMapping  ("/updatavatar")
+    @PostMapping  ("/updateavatar")
     public ResultVO updaetavatar(@RequestBody User user) {
         ResultVO resultVO = this.userService.updateavatar(user);
         return resultVO;
