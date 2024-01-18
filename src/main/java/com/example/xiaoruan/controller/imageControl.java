@@ -38,7 +38,6 @@ public class imageControl {
         }
         String final_fileName = "http://183.136.206.184:21731" + picturePath_mapping + fileName;
         System.out.println(final_fileName);
-
         return final_fileName;
     }
 
